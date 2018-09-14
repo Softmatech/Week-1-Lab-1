@@ -53,7 +53,7 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 let responseDictionary = dataDictionary["response"] as! [String: Any]
                 // Store the returned array of dictionaries in our posts property
                 self.posts = responseDictionary["posts"] as! [[String: Any]]
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
         }
         task.resume()
@@ -65,8 +65,8 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView?.delegate = self
+        tableView?.dataSource = self
         readPhotos()
     }
 
