@@ -67,6 +67,7 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
         super.viewDidLoad()
         tableView?.delegate = self
         tableView?.dataSource = self
+        tableView.rowHeight = 400
         readPhotos()
     }
 
