@@ -13,6 +13,7 @@
 		E66C87F3214B1B6C008E6541 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66C87F1214B1B6C008E6541 /* Main.storyboard */; };
 		E66C87F5214B1B6E008E6541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66C87F4214B1B6E008E6541 /* Assets.xcassets */; };
 		E66C87F8214B1B6E008E6541 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66C87F6214B1B6E008E6541 /* LaunchScreen.storyboard */; };
+		E6E413852152E35E00078A91 /* icon_app_store.png in Resources */ = {isa = PBXBuildFile; fileRef = E6E413842152E35E00078A91 /* icon_app_store.png */; };
 		F498A58E8F26DF5CD1A54F26 /* Pods_Week_lab_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FE71FDA315A0899133E01 /* Pods_Week_lab_1.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		E66C87F4214B1B6E008E6541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E66C87F7214B1B6E008E6541 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E66C87F9214B1B6E008E6541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6E413842152E35E00078A91 /* icon_app_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_app_store.png; path = "Week lab 1/icon_app_store.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E65D233E2152E2B5005F3974 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E6E413842152E35E00078A91 /* icon_app_store.png */,
+				E6020F30214B7AFA00E7B368 /* PhotosViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E65D233F2152E2D6005F3974 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E6099241214B8582001166B4 /* PhotoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E66C87E1214B1B6C008E6541 = {
 			isa = PBXGroup;
 			children = (
@@ -80,13 +99,13 @@
 		E66C87EC214B1B6C008E6541 /* Week lab 1 */ = {
 			isa = PBXGroup;
 			children = (
-				E6020F30214B7AFA00E7B368 /* PhotosViewController.swift */,
+				E65D233F2152E2D6005F3974 /* View */,
+				E65D233E2152E2B5005F3974 /* ViewController */,
 				E66C87ED214B1B6C008E6541 /* AppDelegate.swift */,
 				E66C87F1214B1B6C008E6541 /* Main.storyboard */,
 				E66C87F4214B1B6E008E6541 /* Assets.xcassets */,
 				E66C87F6214B1B6E008E6541 /* LaunchScreen.storyboard */,
 				E66C87F9214B1B6E008E6541 /* Info.plist */,
-				E6099241214B8582001166B4 /* PhotoCell.swift */,
 			);
 			path = "Week lab 1";
 			sourceTree = "<group>";
@@ -153,6 +172,7 @@
 			files = (
 				E66C87F8214B1B6E008E6541 /* LaunchScreen.storyboard in Resources */,
 				E66C87F5214B1B6E008E6541 /* Assets.xcassets in Resources */,
+				E6E413852152E35E00078A91 /* icon_app_store.png in Resources */,
 				E66C87F3214B1B6C008E6541 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

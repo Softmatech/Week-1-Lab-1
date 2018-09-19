@@ -11,9 +11,8 @@ import AlamofireImage
 
 class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
+    var refreshControl: UIRefreshControl!
     //code to get photo counts
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -28,8 +27,12 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let photo = photos[0]
             let originalSize = photo["original_size"] as! [String: Any]
             let urlString = originalSize["url"] as! String
-            let url = URL(string: urlString)
-            cell.imageCellView.af_setImage(withURL: url!)
+            let url = URL(string: urlString)!
+            cell.selectionStyle = .gray
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor.red
+            cell.selectedBackgroundView = backgroundView
+            cell.imageCellView.af_setImage(withURL: url,placeholderImage: cell.placeholderImage,imageTransition: .crossDissolve(0.5))
         }
         return cell
     }
@@ -45,15 +48,17 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
+                self.networkErrorAlert()
             }
             else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print(dataDictionary)
+//                print(dataDictionary)
                 // Get the dictionary from the response key
                 let responseDictionary = dataDictionary["response"] as! [String: Any]
                 // Store the returned array of dictionaries in our posts property
                 self.posts = responseDictionary["posts"] as! [[String: Any]]
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         task.resume()
@@ -65,9 +70,16 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print("????????????-------[",placeholderImage)
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView.rowHeight = 400
+        tableView.rowHeight = 300
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(PhotosViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        readPhotos()
+    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         readPhotos()
     }
 
@@ -76,4 +88,10 @@ class PhotosViewController: UIViewController,UITableViewDataSource,UITableViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    func networkErrorAlert(){
+        let alertController = UIAlertController(title: "Network Error", message: "It's Seems there is a network error. Please try again later.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: { (action) in self.readPhotos()}))
+        self.present(alertController, animated: true)
+    }
+    
 }
