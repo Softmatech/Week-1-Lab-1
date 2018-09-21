@@ -11,6 +11,7 @@ import UIKit
 class PhotoCell: UITableViewCell {
 
     @IBOutlet weak var imageCellView: UIImageView!
+    
     let placeholderURL = URL(string: "https://httpbin.org/image/png")!
     let placeholderImage = UIImage(named: "placeholder")
     
