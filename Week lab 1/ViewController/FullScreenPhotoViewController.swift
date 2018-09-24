@@ -8,12 +8,14 @@
 
 import UIKit
 
-class FullScreenPhotoViewController: UIViewController, UIScrollViewDelegate{
+class FullScreenPhotoViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate{
 
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageZoomView: UIImageView!
+    
+    @IBOutlet var didTapPress: UITapGestureRecognizer!
     var imageURL = ""
     
     override func viewDidLoad() {
@@ -25,10 +27,21 @@ class FullScreenPhotoViewController: UIViewController, UIScrollViewDelegate{
         // Do any additional setup after loading the view.
         imageZoomView.af_setImage(withURL: urls)
         scrollView.contentSize = imageZoomView.image!.size
+        didTapPress.delegate = self
+        //................................................
+        // The didTap: method will be defined in Step 3 below.
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didpanTray(_:)))
+        
+        // Optionally set the number of required taps, e.g., 2 for a double click
+        tapGestureRecognizer.numberOfTapsRequired = 2
+        
+        // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+    imageZoomView.isUserInteractionEnabled = true
+    imageZoomView.addGestureRecognizer(tapGestureRecognizer)
     }
 
     @IBAction func closeAction(_ sender: UIButton) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -41,5 +54,9 @@ class FullScreenPhotoViewController: UIViewController, UIScrollViewDelegate{
         return imageZoomView
     }
     
-
+    @IBAction func didpanTray(_ sender: UITapGestureRecognizer) {
+        viewForZooming(in: scrollView)
+        print("-------------------------------")
+    }
+    
 }
