@@ -87,6 +87,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lim-gS-pRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="kkV-1g-tzh">
                     <connections>
+                        <action selector="didpanTray:" destination="V4k-y7-8Uf" id="p5V-To-LN9"/>
                         <segue destination="NRe-JQ-3Wd" kind="presentation" identifier="firstSegue" id="DNx-ZI-D5t"/>
                     </connections>
                 </tapGestureRecognizer>

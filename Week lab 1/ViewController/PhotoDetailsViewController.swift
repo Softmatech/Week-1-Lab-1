@@ -44,7 +44,8 @@ class PhotoDetailsViewController: UIViewController {
     }
     
     @IBAction func didpanTray(_ sender: UITapGestureRecognizer) {
-        
+        let location = sender.location(in: view)
+        print("Location --->>>> ",location)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
