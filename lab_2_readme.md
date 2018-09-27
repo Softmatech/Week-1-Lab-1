@@ -8,12 +8,12 @@ Time spent: **20** hours spent in total
 
 The following **required** user stories are complete:
 
-- [x ] User can tab an image to view a larger image in a detail view (5pts)
+- [X] User can tab an image to view a larger image in a detail view (5pts)
 
 The following **stretch** user stories are implemented:
 
-- [ x] Add Avatar and Publish Dates (+2pt)
-- [x ] Zoomable Photo View (+2pt)
+- [X] Add Avatar and Publish Dates (+2pt)
+- [X] Zoomable Photo View (+2pt)
 - [ ] Infinite Scrolling (+2pt)
 
 The following **additional** user stories are implemented:
